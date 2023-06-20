@@ -1,10 +1,11 @@
 package examples.example5;
 
+import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
 public class CompositeComparator<T> implements Comparator<T> {
-    private List<Comparator<T>> comparators;
+    private List<Comparator<T>> comparators = new ArrayList<>();
 
     public CompositeComparator(Comparator<T>... comparators) {
         for (Comparator<T> c : comparators) {

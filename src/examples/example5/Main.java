@@ -6,6 +6,7 @@ import examples.StudentFactory;
 import java.util.Comparator;
 import java.util.Set;
 import java.util.TreeSet;
+import java.util.function.Function;
 
 public class Main {
     public static void main(String[] args) {
@@ -13,16 +14,20 @@ public class Main {
         Comparator<Student5> BY_FIRST_NAME_LENGTH = (s1, s2) -> s1.getFirstName().length() - s2.getFirstName().length();
         Comparator<Student5> BY_ID = (s1, s2) -> s1.getStudentID().compareTo(s2.getStudentID());
 
-        Comparator<Student5> COMPOSITE_COMPARATOR = BY_LAST_NAME_LENGTH
-                .thenComparing(BY_FIRST_NAME_LENGTH)
+        Comparator<Student5> COMPOSITE_COMPARATOR = BY_FIRST_NAME_LENGTH
+                .thenComparing(BY_LAST_NAME_LENGTH.reversed())
                 .thenComparing(BY_ID);
 
         CompositeComparator<Student5> MY_COMPOSITE_COMPARATOR = new CompositeComparator<>(
                 BY_LAST_NAME_LENGTH,
                 BY_FIRST_NAME_LENGTH,
-                BY_ID);
+                BY_ID
+        );
 
-        Set<Student5> students = new TreeSet<>(COMPOSITE_COMPARATOR);
+        Comparator<Student5> BY_LAST_NAME_ALPHABET = Comparator.comparing(s -> s.getLastName());
+        // Comparator<Student5> BY_BEST_FRIEND = Comparator.comparing(s -> s.getBestFriend());
+
+        Set<Student5> students = new TreeSet<>(MY_COMPOSITE_COMPARATOR);
         StudentFactory<Student5> factory = (lastName, firstName, studentID) -> new Student5(lastName, firstName, studentID);
 
         Common.fillStudentsCollection(students, factory);

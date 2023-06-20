@@ -4,6 +4,7 @@ import examples.Common;
 import examples.StudentFactory;
 import examples.example1.Student1;
 
+import java.util.Comparator;
 import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
@@ -20,7 +21,6 @@ public class Main {
         System.out.println(s.getLastName() + " is present: " + students.contains(s));
 
         Set<Student2> treeSetOfStudents = new TreeSet<>();
-
         Common.fillStudentsCollection(treeSetOfStudents, factory);
         Common.printCollection(treeSetOfStudents);
     }

@@ -12,14 +12,14 @@ public class Student3 extends Student2 implements Comparable<Student3> {
     public int compareTo(Student3 other) {
         int diff = this.lastName.length() - other.lastName.length();
         if (diff != 0) {
-            return -diff;
+            return diff;
         }
 
-        diff = this.firstName.length() - other.firstName.length();
+        diff = this.firstName.length()-other.firstName.length();
         if (diff != 0) {
             return -diff;
         }
 
-        return -this.studentID.compareTo(other.studentID);
+        return this.studentID.compareTo(other.studentID);
     }
 }

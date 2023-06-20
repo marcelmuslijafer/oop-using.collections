@@ -11,9 +11,9 @@ public class StudentComparator implements Comparator<Student4> {
             return diff;
         }
 
-        diff = s1.getFirstName().length() - s1.getFirstName().length();
+        diff = s1.getFirstName().length() - s2.getFirstName().length();
         if (diff != 0) {
-            return diff;
+            return -diff;
         }
 
         return s1.getStudentID().compareTo(s2.getStudentID());
