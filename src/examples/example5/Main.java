@@ -24,10 +24,11 @@ public class Main {
                 BY_ID
         );
 
+
         Comparator<Student5> BY_LAST_NAME_ALPHABET = Comparator.comparing(s -> s.getLastName());
         // Comparator<Student5> BY_BEST_FRIEND = Comparator.comparing(s -> s.getBestFriend());
 
-        Set<Student5> students = new TreeSet<>(MY_COMPOSITE_COMPARATOR);
+        Set<Student5> students = new TreeSet<>(COMPOSITE_COMPARATOR);
         StudentFactory<Student5> factory = (lastName, firstName, studentID) -> new Student5(lastName, firstName, studentID);
 
         Common.fillStudentsCollection(students, factory);

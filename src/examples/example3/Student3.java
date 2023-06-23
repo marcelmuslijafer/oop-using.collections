@@ -16,7 +16,7 @@ public class Student3 extends Student2 implements Comparable<Student3> {
         }
 
         diff = this.firstName.length()-other.firstName.length();
-        if (diff != 0) {
+        if(diff != 0){
             return -diff;
         }
 
